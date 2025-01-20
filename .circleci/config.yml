@@ -1,1 +1,40 @@
+version: 2.1
 
+jobs:
+  build:
+    docker:
+      - image: cimg/node:14
+	    parallelism: 1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: ls
+      - run:
+          name: Run build
+          command: huiou
+
+
+  test:
+    docker:
+      - image: cimg/node:14
+    parallelism: 2
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: ls
+      - run:
+          name: Parallelized Tests
+          command: |
+            ls
+
+workflows:
+  version: 2
+  example_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+          allow_failure: true
