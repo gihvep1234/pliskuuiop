@@ -37,4 +37,4 @@ workflows:
       - test:
           requires:
             - build
-          allow_failure: true
+          when: always
