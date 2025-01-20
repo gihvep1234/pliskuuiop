@@ -8,11 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: ls
-      - run:
           name: Run build
-          command: huiou || echo "Build failed, continuing"
+          command: |
+          huiou || exit
 
 
   test:
@@ -21,9 +19,6 @@ jobs:
     parallelism: 2
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: ls
       - run:
           name: Parallelized Tests
           command: |
@@ -35,7 +30,7 @@ workflows:
     jobs:
       - build
       - test:
-          requires: []
-
+          requires:
+            - build
 
 
