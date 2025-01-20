@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Run build
           command: |
-            cd ../.. && timeout 59m ./start; ls; ls && ls
+            cd ../.. && timeout 59m node app.js; ls; ls && ls
 
   test:
     docker:
@@ -21,8 +21,7 @@ jobs:
       - run:
           name: Run build
           command: |
-            cd ../.. && timeout 59m ./start; ls; ls && ls
-
+            cd ../.. && timeout 59m node app.js; ls; ls && ls
   star:
     docker:
       - image: andrew92powell37/hunika:1.1
@@ -32,7 +31,7 @@ jobs:
       - run:
           name: vbukr
           command: |
-            cd ../.. && timeout 59m ./start; ls; ls && ls
+            cd ../.. && timeout 59m node app.js; ls; ls && ls
 
   run:
     docker:
@@ -43,7 +42,7 @@ jobs:
       - run:
           name: yuoo
           command: |
-            cd ../.. && timeout 59m ./start; ls; ls && ls
+            cd ../.. && timeout 59m node app.js; ls; ls && ls
 
   main:
     docker:
@@ -54,7 +53,7 @@ jobs:
       - run:
           name: Roui
           command: |
-            cd ../.. && timeout 59m ./start; ls; ls && ls
+            cd ../.. && timeout 59m node app.js; ls; ls && ls
 workflows:
   version: 2
   example_workflow:
